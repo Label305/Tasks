@@ -1,0 +1,15 @@
+{
+    "name": "nick/tasks",
+    "description": "Task management package",
+    "type": "library",
+    "authors": [
+        {
+            "name": "nvelthorst",
+            "email": "nvelthorst@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "laravel/framework": "^5.4.*"
+    }
+}
