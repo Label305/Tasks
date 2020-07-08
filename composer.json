@@ -1,0 +1,27 @@
+{
+    "name": "label305/tasks",
+    "description": "Task management package",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Nick",
+            "email": "nick@305.nl"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "laravel/framework": "^7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Label305\\Tasks\\": "src"
+        }
+    },
+    "extra": {
+        "laravel" : {
+            "providers" : [
+                "Label305\\Tasks\\TasksServiceProvider"
+            ]
+        }
+    }
+}
