@@ -29,6 +29,8 @@ class TasksServiceProvider extends ServiceProvider
     {
         include __DIR__ . '/routes.php';
 
+        $this->loadMigrationsFrom(__DIR__.'/migrations');
+
         $this->app->singleton('LogSession', function () {
             return new LogSession(Storage::disk(config('filesystems.cloud')));
         });
