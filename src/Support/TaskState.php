@@ -4,9 +4,8 @@ namespace Label305\Tasks\Support;
 
 
 use Carbon\Carbon;
-use Label305\Exceptions\AssertionException;
-use Label305\Persistence\Tasks\TaskRepository;
 use Label305\Tasks\Enums\State;
+use Label305\Tasks\Persistence\Tasks\TaskRepository;
 use Label305\Tasks\Task;
 
 class TaskState
