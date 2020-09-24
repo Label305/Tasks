@@ -11,7 +11,8 @@
     "require": {
         "php": ">=7.1",
         "laravel/framework": "^7",
-        "league/flysystem-aws-s3-v2": "^1.0"
+        "league/flysystem-aws-s3-v2": "^1.0",
+        "monolog/monolog": "^2.1"
     },
     "autoload": {
         "psr-4": {

@@ -40,7 +40,7 @@ class LogSession
 
         touch($this->task->getLocalPathForLog());
 
-        Log::useFiles($this->task->getLocalPathForLog());
+//        Log::useFiles($this->task->getLocalPathForLog());
     }
 
     /**
