@@ -40,7 +40,6 @@ class LogSession
 
         touch($this->task->getLocalPathForLog());
 
-//        Log::useFiles($this->task->getLocalPathForLog());
     }
 
     /**
@@ -59,6 +58,11 @@ class LogSession
     public function flush()
     {
         unlink($this->task->getLocalPathForLog());
+    }
+
+    public function getTaskLocation()
+    {
+        return $this->task !== null ? $this->task->getLocalPathForLog() : storage_path('logs/laravel.log');
     }
 
 }

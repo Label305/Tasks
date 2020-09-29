@@ -4,6 +4,7 @@
 namespace Label305\Tasks\Logging;
 
 
+use Label305\Tasks\Logging\Facade\LogSession as LogSessionFacade;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
@@ -15,6 +16,6 @@ class CreateLogSessionLogger
      */
     public function __invoke(array $config)
     {
-        return new Logger('tasklog', [new StreamHandler(LogSession::getTaskLocation())]);
+        return new Logger('tasklog', [new StreamHandler(LogSessionFacade::getTaskLocation())]);
     }
 }
