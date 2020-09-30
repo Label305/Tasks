@@ -23,7 +23,7 @@ trait DispatchesContinuousTasks
 
     private function create($job): ContinuousTask
     {
-        $continuousTask = new ContinuousTask(null, $job);
+        $continuousTask = new ContinuousTask($job);
         $continuousTask->setResult(Result::CREATED);
         $continuousTask->setState(State::CREATED);
         $continuousTask->setType($this->getTypeFromJob($job));
