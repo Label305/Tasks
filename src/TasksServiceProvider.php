@@ -5,6 +5,8 @@ namespace Label305\Tasks;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
 use Label305\Tasks\Logging\LogSession;
+use Label305\Tasks\Persistence\ContinuousTasks\ContinuousTaskRepository;
+use Label305\Tasks\Persistence\ContinuousTasks\EloquentContinuousTaskRepository;
 use Label305\Tasks\Persistence\Tasks\EloquentTaskRepository;
 use Label305\Tasks\Persistence\Tasks\TaskRepository;
 use Label305\Tasks\Support\TaskResult;
@@ -41,5 +43,6 @@ class TasksServiceProvider extends ServiceProvider
         $this->app->singleton('TaskState', TaskState::class);
 
         $this->app->bind(TaskRepository::class, EloquentTaskRepository::class);
+        $this->app->bind(ContinuousTaskRepository::class, EloquentContinuousTaskRepository::class);
     }
 }
