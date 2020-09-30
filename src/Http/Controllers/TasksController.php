@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Label305\Tasks\Persistence\Tasks\TaskRepository;
 use Label305\Tasks\DispatchesTasks;
 use Label305\Tasks\Enums\State;
+use League\Flysystem\Adapter\Local;
 
 class TasksController extends Controller
 {
@@ -34,6 +35,10 @@ class TasksController extends Controller
         $cloudDisk = Storage::disk(config('filesystems.cloud'));
         if (!$cloudDisk->exists($task->getPersistentPathForLog())) {
             return response('No log found in cloud.. yet.', 200, ['Content-Type' => 'text/plain']);
+        }
+
+        if ($cloudDisk->getDriver()->getAdapter() instanceof Local) {
+            return response()->file($cloudDisk->path($task->getPersistentPathForLog()));
         }
 
         $url = $cloudDisk->url($task->getPersistentPathForLog());
