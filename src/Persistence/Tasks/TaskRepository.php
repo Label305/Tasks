@@ -29,6 +29,11 @@ interface TaskRepository
     public function getPage(int $page):array;
 
     /**
+     * @return int
+     */
+    public function totalNumPages():int;
+
+    /**
      * @param int $page
      * @param Carbon $from
      * @param Carbon $till

@@ -63,6 +63,11 @@ class EloquentTaskRepository implements TaskRepository
         return $result;
     }
 
+    public function totalNumPages():int
+    {
+        return ceil(EloquentTask::count() / self::DEFAULT_PAGE_SIZE);
+    }
+
     public function getAllBetween(int $page, Carbon $from, Carbon $till)
     {
         $limit = self::DEFAULT_PAGE_SIZE;
