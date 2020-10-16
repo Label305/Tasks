@@ -49,7 +49,7 @@ class ContinuousTask extends Task
             TaskResult::addMetaData('peak_memory_usage_MB', round((memory_get_peak_usage(1) / 1000000)));
 
 
-            LogSession::persist($this->getPersistentPathForLog());
+            LogSession::persist();
 
             if ($this->shouldFinishTask()) {
                 LogSession::flush();

@@ -6,6 +6,7 @@ namespace Label305\Tasks\Persistence\Tasks;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Label305\Tasks\Persistence\Log\EloquentLog;
 use Label305\Tasks\Task;
 
 /**
@@ -32,6 +33,11 @@ class EloquentTask extends Model
     public function getTable()
     {
         return 'tasks';
+    }
+
+    public function log()
+    {
+        return $this->hasOne(EloquentLog::class, 'task_id');
     }
 
     public static function fromTask(Task $task): EloquentTask
@@ -64,6 +70,11 @@ class EloquentTask extends Model
         $task->setCreatedAt($this->created_at);
         $task->setUpdatedAt($this->updated_at);
         $task->setLastStartedAt($this->last_started_at);
+
+        if($this->relationLoaded('log') && $this->log){
+            $task->setLog($this->log->toLog());
+        }
+
 
         return $task;
     }

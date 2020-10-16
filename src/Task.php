@@ -251,7 +251,7 @@ class Task implements ShouldQueue
             Log::info('Ended task at ' . date('Y-m-d H:i:s') . ' with peak memory usage ' . (memory_get_peak_usage(1) / 1000000) . 'MB');
             TaskResult::addMetaData('peak_memory_usage_MB', round((memory_get_peak_usage(1) / 1000000)));
 
-            LogSession::persist($this->getPersistentPathForLog());
+            LogSession::persist();
             LogSession::flush();
         }
     }

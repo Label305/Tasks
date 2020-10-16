@@ -7,6 +7,7 @@ namespace Label305\Tasks\Logging;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Log;
+use Label305\Tasks\Support\LogPersister;
 use Label305\Tasks\Task;
 
 class LogSession
@@ -18,17 +19,17 @@ class LogSession
     private $task = null;
 
     /**
-     * @var Filesystem
+     * @var LogPersister
      */
-    private $filesystem;
+    private $persister;
 
     /**
      * LogSession constructor.
-     * @param FilesystemAdapter $filesystem
+     * @param LogPersister $persister
      */
-    public function __construct(FilesystemAdapter $filesystem)
+    public function __construct(LogPersister $persister)
     {
-        $this->filesystem = $filesystem;
+        $this->persister = $persister;
     }
 
     /**
@@ -45,11 +46,16 @@ class LogSession
     /**
      * Persist the new session
      */
-    public function persist(string $path)
+    public function persist()
     {
-        $fileHandle = fopen($this->task->getLocalPathForLog(), 'r');
+//        $fileHandle = fopen($this->task->getLocalPathForLog(), 'r');
 
-        $this->filesystem->put($path, $fileHandle, 'public');
+        $this->persister->persist($this->task);
+
+//        /**
+//         * @var $filesystem FilesystemAdapter
+//         */
+//        $filesystem->put($path, $fileHandle, 'public');
     }
 
     /**
