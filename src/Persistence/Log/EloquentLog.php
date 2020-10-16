@@ -5,6 +5,8 @@ namespace Label305\Tasks\Persistence\Log;
 
 
 use Label305\Tasks\Persistence\Tasks\EloquentTask;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class EloquentLog extends Model
 {
