@@ -14,7 +14,7 @@ class EloquentLogRepository implements LogRepository
     public function store(Log $log): Log
     {
         $eloquentLog = EloquentLog::fromLog($log);
-        $eloquentLog = $eloquentLog->save();
+        $eloquentLog->save();
 
         return $eloquentLog->toLog();
     }

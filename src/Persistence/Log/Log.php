@@ -8,7 +8,7 @@ class Log
 {
 
     /**
-     * @var int id
+     * @var int|null id
      */
     private $id;
 
@@ -23,17 +23,17 @@ class Log
     private $blob;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      */
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
