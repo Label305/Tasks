@@ -9,9 +9,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Facades\Log;
 use Label305\Tasks\Exceptions\AssertionException;
 use Label305\Tasks\Logging\Facade\LogSession;
+use Illuminate\Support\Facades\Log;
+use Label305\Tasks\Persistence\Log\Log as StoredLog;
 use Label305\Tasks\Support\Facades\TaskResult;
 use Label305\Tasks\Support\Facades\TaskState;
 
@@ -48,6 +49,11 @@ class Task implements ShouldQueue
 
     /** @var bool */
     private $isLongRunning = false;
+
+    /**
+     * @var StoredLog|null log
+     */
+    private $log;
 
     /**
      * Task constructor.
@@ -286,5 +292,20 @@ class Task implements ShouldQueue
         );
     }
 
+    /**
+     * @param StoredLog $log
+     */
+    public function setLog(StoredLog $log)
+    {
+        $this->log = $log;
+    }
+
+    /**
+     * @return StoredLog|null
+     */
+    public function getLog(): ?StoredLog
+    {
+        return $this->log;
+    }
 
 }

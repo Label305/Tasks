@@ -103,7 +103,7 @@ class EloquentTaskRepository implements TaskRepository
     public function findById(int $id):?Task
     {
         /** @var EloquentTask $eloquentTask */
-        $eloquentTask = EloquentTask::where('id', $id)
+        $eloquentTask = EloquentTask::where('id', $id)->with('log')
             ->first();
 
         if ($eloquentTask !== null) {

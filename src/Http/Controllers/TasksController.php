@@ -32,6 +32,10 @@ class TasksController extends Controller
             return response()->file($task->getLocalPathForLog());
         }
 
+        if($task->getLog() !== null){
+            return response($task->getLog()->getBlob());
+        }
+
         $cloudDisk = Storage::disk(config('filesystems.cloud'));
         if (!$cloudDisk->exists($task->getPersistentPathForLog())) {
             return response('No log found in cloud.. yet.', 200, ['Content-Type' => 'text/plain']);
